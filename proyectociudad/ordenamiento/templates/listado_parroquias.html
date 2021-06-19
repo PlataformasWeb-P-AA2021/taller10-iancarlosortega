@@ -1,0 +1,25 @@
+<h3>Listado de Parroquias</h3>
+<hr>
+
+<ul>
+    {% for p in parroquias %}
+
+        <li>
+            <b>{{ p }}</b> - [<a href="{% url 'editar_parroquia' p.id %}">Editar Parroquia</a>]
+            <ul>
+                {% for b in p.parroquias.all %}
+                    <li>
+                        <span>{{ b }} - [<a href="{% url 'editar_barrio' b.id %}">Editar Barrio</a>] </span>
+                    </li>
+                {% endfor %}
+            </ul>
+            [<a href="{% url 'crear_barrio_parroquia' p.id%}">Agregar Barrio</a>]
+        </li>
+        <br>
+
+    {% endfor %}
+</ul>
+<br />
+[<a href="{% url 'crear_parroquia' %}">Agregar Parroquia</a>]
+<br>
+[<a href="{% url 'listado_barrios' %}">Listado de barrios</a>]
